@@ -111,6 +111,7 @@ class Service {
                     delay: 1,
                     ease: "Expo.easeOut",
                     onComplete: () => {
+                        activeService = this;
                         isAnimating = false;
                         this.isActive = true;
                     }
@@ -123,7 +124,6 @@ class Service {
         this.trigger.addEventListener("click", (e) => {
             let toOpen = true;
             for(let service of services) {
-                console.log(service.isActive)
                 if(service.isActive) {
                     toOpen = false;
                 }
