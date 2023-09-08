@@ -45,7 +45,6 @@ class Service {
             if(!isAnimating && activeService !== this && window.screen.width > 480) {
                 
                 isAnimating = true;
-                activeService.isActive = false;
 
                 gsap.set(this.serviceSubTitle, {opacity: 0, y: "-64vw"});
                 gsap.set(this.serviceTitle, {opacity: 0, y: "-2.6vw"});                
@@ -111,9 +110,10 @@ class Service {
                     delay: 1,
                     ease: "Expo.easeOut",
                     onComplete: () => {
+                        activeService.isActive = false;
                         activeService = this;
-                        isAnimating = false;
                         this.isActive = true;
+                        isAnimating = false;
                     }
                 });
             
@@ -128,7 +128,8 @@ class Service {
                     toOpen = false;
                 }
             }
-            if(!isOpening && toOpen) {
+         
+        if(!isOpening && !isAnimating && !isDetailsOpen && toOpen) {
                 !isAnimating ? this.clickEventHandler() : setTimeout(() => this.clickEventHandler(), 1800 - (new Date().getTime() - timeMouseEntered));
             }
         });
