@@ -122,13 +122,14 @@ class Service {
         });
         
         this.trigger.addEventListener("click", (e) => {
+            console.log('clicked')
             let toOpen = true;
             for(let service of services) {
                 if(service.isActive) {
                     toOpen = false;
                 }
             }
-         
+         console.log(toOpen)
         if(!isOpening && !isAnimating && !isDetailsOpen && toOpen) {
                 !isAnimating ? this.clickEventHandler() : setTimeout(() => this.clickEventHandler(), 1800 - (new Date().getTime() - timeMouseEntered));
             }
