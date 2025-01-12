@@ -121,11 +121,11 @@ class Service {
         
         });
         
-        this.trigger.addEventListener("click", (e) => {
-            console.log('clicked')
+        this.trigger.addEventListener("click", (e) => 
             let toOpen = true;
             for(let service of services) {
                 if(service.isActive) {
+                    console.log(service)
                     toOpen = false;
                 }
             }
